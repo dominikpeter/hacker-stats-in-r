@@ -1,7 +1,6 @@
 
 
 library(data.table)
-library(boot)
 
 
 shuffle <- function(x, y){
@@ -32,14 +31,22 @@ draw_bs <- function(x, y, FUN = mean, size=100, ...){
 
 set.seed(2323)
 
-x1 <- rnorm(1000, mean = 10, sd = 3)
-x2 <- rnorm(1000, mean = 10, sd = 4)
+x1 <- rnorm(1000, mean = 9.5, sd = 3)
+x2 <- rnorm(1000, mean = 10, sd = 3)
 
 t.test(x1, x2, alternative = "less")
 
 
 diff <- mean(x1) - mean(x2)
-mean(diff >= draw_bs(x1, x2, mean, 10000, na.rm=TRUE))
+mean(diff >= draw_bs(x1, x2, mean, 100000, na.rm=TRUE))
+
+
+
+
+
+
+
+
 
 
 
